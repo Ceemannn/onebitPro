@@ -1,5 +1,5 @@
 import { ArrowRight, Users, Briefcase, Award, CheckCircle, Building } from 'lucide-react'
-import { Container, SectionHeading, Card, CardTitle, CardDescription, Badge, Button } from '@/components/ui'
+import { Container, Card, CardTitle, CardDescription, Badge, Button } from '@/components/ui'
 
 export default function Bridge() {
   return (

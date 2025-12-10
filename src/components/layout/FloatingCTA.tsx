@@ -1,7 +1,6 @@
 import { useState, useEffect } from 'react'
 import { useLocation } from 'react-router-dom'
 import { ArrowUp, MessageCircle, Play, X, Phone, Mail } from 'lucide-react'
-import gsap from 'gsap'
 import { Button } from '@/components/ui'
 import { useScrollPosition, useScrollToTop } from '@/hooks'
 

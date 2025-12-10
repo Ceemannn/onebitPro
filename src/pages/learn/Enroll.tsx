@@ -1,7 +1,7 @@
 import { useState } from 'react'
 import { useParams } from 'react-router-dom'
 import { ArrowLeft, Check } from 'lucide-react'
-import { Container, Card, CardTitle, Button, Badge } from '@/components/ui'
+import { Container, Card, Button, Badge } from '@/components/ui'
 import { courseDetails } from '@/config/courses'
 
 export default function Enroll() {

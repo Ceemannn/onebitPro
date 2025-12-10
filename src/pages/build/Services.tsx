@@ -1,4 +1,4 @@
-import { ArrowRight, Check } from 'lucide-react'
+import { Check } from 'lucide-react'
 import { Container, SectionHeading, Card, CardTitle, CardDescription, Button } from '@/components/ui'
 import { Icon } from '@/components/ui/Icon'
 import { servicesCatalog, engagementModel } from '@/config/services'
