@@ -1,4 +1,4 @@
-import { Suspense, lazy } from 'react'
+import { Suspense, lazy, useState, useEffect } from 'react'
 import { Routes, Route, Navigate } from 'react-router-dom'
 import { Layout } from '@/components/layout'
 
@@ -22,13 +22,48 @@ const Contact = lazy(() => import('@/pages/Contact'))
 const Legal = lazy(() => import('@/pages/Legal'))
 const NotFound = lazy(() => import('@/pages/NotFound'))
 
-// Loading component
+// Loading component with progress bar
 function PageLoader() {
+  const [progress, setProgress] = useState(0)
+
+  useEffect(() => {
+    // Simulate progress filling up
+    const interval = setInterval(() => {
+      setProgress((prev) => {
+        if (prev >= 90) {
+          clearInterval(interval)
+          return 90 // Hold at 90% until actual load completes
+        }
+        // Accelerate initially, then slow down
+        const increment = prev < 30 ? 15 : prev < 60 ? 8 : 3
+        return Math.min(prev + increment, 90)
+      })
+    }, 100)
+
+    // Jump to 100% when component unmounts (page loaded)
+    return () => {
+      clearInterval(interval)
+      setProgress(100)
+    }
+  }, [])
+
   return (
     <div className="min-h-[60vh] flex items-center justify-center">
-      <div className="flex flex-col items-center gap-4">
-        <div className="w-12 h-12 border-4 border-primary/20 border-t-primary rounded-full animate-spin" />
-        <p className="text-gray-500 dark:text-gray-400">Loading...</p>
+      <div className="flex flex-col items-center gap-6 w-full max-w-xs">
+        {/* Progress bar container */}
+        <div className="w-full h-2 bg-gray-200 dark:bg-gray-700 rounded-full overflow-hidden">
+          <div
+            className="h-full bg-gradient-to-r from-primary to-secondary rounded-full transition-all duration-150 ease-out"
+            style={{ width: `${progress}%` }}
+          />
+        </div>
+        {/* Percentage text */}
+        <div className="flex items-center gap-2">
+          <span className="text-2xl font-bold text-primary dark:text-secondary">
+            {progress}%
+          </span>
+          <span className="text-gray-500 dark:text-gray-400 text-sm">Loading...</span>
+        </div>
       </div>
     </div>
   )

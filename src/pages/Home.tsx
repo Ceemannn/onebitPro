@@ -486,30 +486,30 @@ function WhyOnebitSection() {
             </Button>
           </div>
 
-          {/* Visual */}
+          {/* Visual - all images preloaded, crossfade via opacity */}
           <div className="relative">
-            <div className="aspect-square rounded-3xl overflow-hidden bg-gradient-to-br from-primary/10 to-secondary/10 dark:from-primary/20 dark:to-secondary/20">
-              {activeTab === 'build' && (
-                <img
-                  src="/home-build.jpg"
-                  alt="Enterprise technology solutions"
-                  className="w-full h-full object-cover"
-                />
-              )}
-              {activeTab === 'learn' && (
-                <img
-                  src="/home-learn.jpg"
-                  alt="Job-ready training programs"
-                  className="w-full h-full object-cover"
-                />
-              )}
-              {activeTab === 'bridge' && (
-                <img
-                  src="/home-bridge.jpg"
-                  alt="Talent-to-company matching"
-                  className="w-full h-full object-cover"
-                />
-              )}
+            <div className="aspect-square rounded-3xl overflow-hidden bg-gray-100 dark:bg-gray-800">
+              <img
+                src="/home-build.jpg"
+                alt="Enterprise technology solutions"
+                className={`absolute inset-0 w-full h-full object-cover transition-opacity duration-500 ease-in-out ${
+                  activeTab === 'build' ? 'opacity-100 z-10' : 'opacity-0 z-0'
+                }`}
+              />
+              <img
+                src="/home-learn.jpg"
+                alt="Job-ready training programs"
+                className={`absolute inset-0 w-full h-full object-cover transition-opacity duration-500 ease-in-out ${
+                  activeTab === 'learn' ? 'opacity-100 z-10' : 'opacity-0 z-0'
+                }`}
+              />
+              <img
+                src="/home-bridge.jpg"
+                alt="Talent-to-company matching"
+                className={`absolute inset-0 w-full h-full object-cover transition-opacity duration-500 ease-in-out ${
+                  activeTab === 'bridge' ? 'opacity-100 z-10' : 'opacity-0 z-0'
+                }`}
+              />
             </div>
           </div>
         </div>
